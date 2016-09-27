@@ -1,0 +1,69 @@
+FORMAT: 1A
+
+# SourceGroups API
+SourceGroups API is...
+
+# Group SourceGroups
+Notes related resources of the **SourceGroups API**
+
+## SourceGroups Collection [/api/v1/sourcegroups]
+### List all SourceGroups [GET]
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "prod web server", 
+                "description": "production web server",
+                "query": "production web"
+            },
+            {
+                "id": 2,
+                "name": "prod database server",
+                "description": "production database server",
+                "query": "production database"
+            }
+        ]
+
+### Create a SourceGroup [POST]
++ Request (application/json)
+
+        {
+            "name": "stage web server",
+            "description": "staging web server",
+            "query": "staging web"
+        }
+
++ Response 201 (application/json)
+
+        {
+            "id": 3,
+            "name": "stage web server",
+            "description": "staging web server",
+            "query": "staging web"
+        }
+
+## SourceGroup [/api/v1/sourcegroups/{id}]
+A single SourceGroup object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the SourceGroup to perform action with. Has example value.
+
+### Retrieve a SourceGroup [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            {
+                "id": 2,
+                "name": "prod database server",
+                "description": "production database server",
+                "query": "production database"
+            }
+
+### Remove a SourceGroup [DELETE]
++ Response 204
