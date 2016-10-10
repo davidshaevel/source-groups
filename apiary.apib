@@ -12,13 +12,13 @@ Notes related resources of the **SourceGroups API**
 
         [
             {
-                "id": 1,
+                "tenantId": "78facb56-f21c-40bb-9cb5-ddae78fb47b8",
                 "name": "prod-web-server", 
                 "description": "production web server",
                 "query": "production web"
             },
             {
-                "id": 2,
+                "tenantId": "78facb56-f21c-40bb-9cb5-ddae78fb47b8",
                 "name": "prod-database-server",
                 "description": "production database server",
                 "query": "production database"
@@ -37,17 +37,17 @@ Notes related resources of the **SourceGroups API**
 + Response 201 (application/json)
 
         {
-            "id": 3,
+            "tenantId": "78facb56-f21c-40bb-9cb5-ddae78fb47b8",
             "name": "stage-web-server",
             "description": "staging web server",
             "query": "staging web"
         }
 
-## SourceGroup [/api/v1/sourcegroups/{id}]
+## SourceGroup [/api/v1/sourcegroups/{name}]
 A single SourceGroup object with all its details
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the SourceGroup to perform action with. Has example value.
+    + name (required, String, `prod-database-server`) ... String `name` of the SourceGroup to perform action with. Has example value.
 
 ### Retrieve a SourceGroup [GET]
 + Response 200 (application/json)
@@ -59,10 +59,21 @@ A single SourceGroup object with all its details
     + Body
 
             {
-                "id": 2,
+                "tenantId": "78facb56-f21c-40bb-9cb5-ddae78fb47b8",
                 "name": "prod-database-server",
                 "description": "production database server",
-                "query": "production database"
+                "query": "production database",
+                "sources": [
+                    {
+                        "tenantId": "78facb56-f21c-40bb-9cb5-ddae78fb47b8",
+                        "source": "meter-vm-1",
+                        "products": [
+                            "PULSE"
+                        ],
+                        "createdTimestamp": 1476118499000,
+                        "receivedTimestamp": 1476118499862
+                    }
+                ]
             }
 
 ### Remove a SourceGroup [DELETE]
